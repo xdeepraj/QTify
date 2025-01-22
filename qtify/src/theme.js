@@ -29,6 +29,16 @@ const theme = createTheme({
         }
       `,
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "10px",
+          "&.MuiButton-containedSecondary": {
+            color: "#34C94B", // Primary color for text
+          },
+        },
+      },
+    },
   },
 });
 

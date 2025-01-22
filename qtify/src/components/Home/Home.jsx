@@ -1,12 +1,13 @@
 import React from "react";
 
 import Navbar from "../Navbar/Navbar";
+import Hero from "../Hero/Hero";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      Home<div>from home child div change 23</div>
+      <Hero />
     </div>
   );
 };
