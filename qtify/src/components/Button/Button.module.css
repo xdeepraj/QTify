@@ -1,0 +1,4 @@
+.button {
+  color: var(--color-primary) !important;
+  border-radius: 10px;
+}

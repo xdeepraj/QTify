@@ -1,9 +1,12 @@
 import React from "react";
 
+import Navbar from "../Navbar/Navbar";
+
 const Home = () => {
   return (
     <div>
-      Home<div>from home child div change</div>
+      <Navbar />
+      Home<div>from home child div change 23</div>
     </div>
   );
 };
