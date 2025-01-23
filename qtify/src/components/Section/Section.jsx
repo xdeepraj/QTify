@@ -17,12 +17,12 @@ const Section = () => {
     performNewApi();
   }, []);
 
-  //   useEffect(() => {
-  //     console.log("topAlbumData");
-  //     console.log(topAlbumData);
-  //     console.log("newAlbumData");
-  //     console.log(newAlbumData);
-  //   }, [topAlbumData, newAlbumData]);
+  useEffect(() => {
+    console.log("topAlbumData");
+    console.log(topAlbumData);
+    console.log("newAlbumData");
+    console.log(newAlbumData);
+  }, [topAlbumData, newAlbumData]);
 
   const performTopApi = async () => {
     try {
@@ -38,7 +38,7 @@ const Section = () => {
   const performNewApi = async () => {
     try {
       const response = await axios.get(
-        "https://qtify-backend-labs.crio.do/albums/new"
+        "https://qtify-backend-labs.crio.do/albums/top"
       );
       setNewAlbumData(response.data);
     } catch (error) {
