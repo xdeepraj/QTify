@@ -38,7 +38,7 @@ const Section = () => {
   const performNewApi = async () => {
     try {
       const response = await axios.get(
-        "https://qtify-backend-labs.crio.do/albums/top"
+        "https://qtify-backend-labs.crio.do/albums/new"
       );
       setNewAlbumData(response.data);
     } catch (error) {
