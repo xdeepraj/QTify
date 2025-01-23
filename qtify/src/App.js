@@ -1,5 +1,3 @@
-import "./App.css";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 
@@ -9,12 +7,14 @@ import theme from "./theme";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+      <div style={{ backgroundColor: theme.palette.secondary.main }}>
+        <CssBaseline />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
+      </div>
     </ThemeProvider>
   );
 }
