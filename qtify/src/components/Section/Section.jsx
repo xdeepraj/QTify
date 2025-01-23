@@ -17,6 +17,13 @@ const Section = () => {
     performNewApi();
   }, []);
 
+  //   useEffect(() => {
+  //     console.log("topAlbumData");
+  //     console.log(topAlbumData);
+  //     console.log("newAlbumData");
+  //     console.log(newAlbumData);
+  //   }, [topAlbumData, newAlbumData]);
+
   const performTopApi = async () => {
     try {
       const response = await axios.get(
