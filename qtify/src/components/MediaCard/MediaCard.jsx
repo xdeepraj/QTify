@@ -39,7 +39,7 @@ export default function MediaCard({ albumData }) {
         </Stack>
       </CardActionArea>
 
-      <Typography sx={{ color: "tertiary.main" }}>Bollywood song</Typography>
+      <Typography sx={{ color: "tertiary.main" }}>{albumData.title}</Typography>
     </Card>
   );
 }
