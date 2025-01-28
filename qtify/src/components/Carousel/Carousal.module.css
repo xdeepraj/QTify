@@ -1,0 +1,19 @@
+.carousel_container {
+  position: relative;
+}
+
+.customArrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.customPrev {
+  left: 0;
+}
+
+.customNext {
+  right: 0;
+}

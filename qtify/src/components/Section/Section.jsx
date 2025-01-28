@@ -6,23 +6,26 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import MediaCard from "../MediaCard/MediaCard";
-import Button from "../Button/Button";
+import BasicButtons from "../Button/Button";
+import Carousel from "../Carousel/Carousel";
 
 const Section = () => {
   const [topAlbumData, setTopAlbumData] = useState([]);
   const [newAlbumData, setNewAlbumData] = useState([]);
+  const [isTopCollapsed, setIsTopCollapsed] = useState(false);
+  const [isNewCollapsed, setIsNewCollapsed] = useState(false);
 
   useEffect(() => {
     performTopApi();
     performNewApi();
   }, []);
 
-  useEffect(() => {
-    console.log("topAlbumData");
-    console.log(topAlbumData);
-    console.log("newAlbumData");
-    console.log(newAlbumData);
-  }, [topAlbumData, newAlbumData]);
+  //   useEffect(() => {
+  //     console.log("topAlbumData");
+  //     console.log(topAlbumData);
+  //     console.log("newAlbumData");
+  //     console.log(newAlbumData);
+  //   }, [topAlbumData, newAlbumData]);
 
   const performTopApi = async () => {
     try {
@@ -45,6 +48,14 @@ const Section = () => {
       console.log(error.message);
     }
   };
+
+  const handleCollapseTopAlbums = () => {
+    setIsTopCollapsed(!isTopCollapsed);
+  };
+
+  const handleCollapseNewAlbums = () => {
+    setIsNewCollapsed(!isNewCollapsed);
+  };
   return (
     <div>
       <Grid
@@ -58,22 +69,34 @@ const Section = () => {
         }}
       >
         <Typography sx={{ color: "tertiary.main" }}>Top albums</Typography>
-        <Button text={"Collapse"} />
+        <BasicButtons
+          text={isTopCollapsed ? "Collapse" : "Show all"}
+          onClick={handleCollapseTopAlbums}
+        />
       </Grid>
-      <Box
-        sx={{
-          display: "flex",
-          marginLeft: "30px",
-        }}
-      >
-        <Grid container spacing={2}>
-          {topAlbumData.map((album, index) => (
-            <Grid container key={index} size={{ xs: 3, md: 2.4, lg: 1.7 }}>
-              <MediaCard albumData={album} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      {!isTopCollapsed ? (
+        <Box
+          sx={{
+            marginLeft: "30px",
+          }}
+        >
+          <Carousel albumData={topAlbumData} />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            marginLeft: "30px",
+          }}
+        >
+          <Grid container>
+            {topAlbumData.map((album) => (
+              <Grid container key={album.id} size={{ xs: 3, md: 2.4, lg: 1.7 }}>
+                <MediaCard albumData={album} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
 
       <Grid
         container
@@ -86,22 +109,34 @@ const Section = () => {
         }}
       >
         <Typography sx={{ color: "tertiary.main" }}>New albums</Typography>
-        <Button text={"Show all"} />
+        <BasicButtons
+          text={isNewCollapsed ? "Collapse" : "Show all"}
+          onClick={handleCollapseNewAlbums}
+        />
       </Grid>
-      <Box
-        sx={{
-          display: "flex",
-          marginLeft: "30px",
-        }}
-      >
-        <Grid container spacing={2}>
-          {newAlbumData.map((album, index) => (
-            <Grid container key={index} size={{ xs: 3, md: 2.4, lg: 1.7 }}>
-              <MediaCard albumData={album} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      {!isNewCollapsed ? (
+        <Box
+          sx={{
+            marginLeft: "30px",
+          }}
+        >
+          <Carousel albumData={newAlbumData} />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            marginLeft: "30px",
+          }}
+        >
+          <Grid container>
+            {newAlbumData.map((album) => (
+              <Grid container key={album.id} size={{ xs: 3, md: 2.4, lg: 1.7 }}>
+                <MediaCard albumData={album} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
     </div>
   );
 };

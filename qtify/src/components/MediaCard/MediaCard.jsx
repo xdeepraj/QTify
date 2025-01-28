@@ -22,7 +22,7 @@ export default function MediaCard({ albumData }) {
         }}
       >
         <Stack direction="column" alignItems="flex-start">
-          <img src={albumData.image} alt="" width="160px" height="160px" />
+          <img src={albumData.image} alt="" width="165px" height="165px" />
 
           <Chip
             label={`${albumData.follows} Follows`}
@@ -33,7 +33,7 @@ export default function MediaCard({ albumData }) {
               margin: "8px 10px",
               color: "tertiary.main",
               backgroundColor: "secondary.main",
-              //   maxWidth: "fit-content",
+              maxWidth: "fit-content",
             }}
           />
         </Stack>
