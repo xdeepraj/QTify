@@ -7,6 +7,7 @@ import Chip from "@mui/material/Chip";
 import { Stack } from "@mui/material";
 
 export default function MediaCard({ albumData }) {
+  const followOrLike = albumData.follows || albumData.likes;
   return (
     <Card
       sx={{
@@ -25,7 +26,7 @@ export default function MediaCard({ albumData }) {
           <img src={albumData.image} alt="" width="165px" height="165px" />
 
           <Chip
-            label={`${albumData.follows} Follows`}
+            label={`${followOrLike} ${albumData.follows ? "Follows" : "Likes"}`}
             sx={{
               height: "25px",
               width: "90px",

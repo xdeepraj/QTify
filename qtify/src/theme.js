@@ -47,6 +47,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiTabPanel: {
+      styleOverrides: {
+        root: {
+          color: "tertiary.main",
+          backgroundColor: "secondary.main",
+          padding: "16px",
+        },
+      },
+    },
   },
 });
 
