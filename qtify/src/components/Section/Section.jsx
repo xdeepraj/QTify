@@ -41,7 +41,9 @@ const Section = ({
           marginLeft: "30px",
         }}
       >
-        <Typography sx={{ color: "tertiary.main" }}>{albumName}</Typography>
+        <Typography sx={{ color: "tertiary.main", fontSize: "1.3rem" }}>
+          {albumName}
+        </Typography>
         {isSongSection ? (
           <></>
         ) : (
