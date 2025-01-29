@@ -34,7 +34,7 @@ const theme = createTheme({
         root: {
           borderRadius: "10px",
           "&.MuiButton-containedSecondary": {
-            color: "#34C94B", // Primary color for text
+            color: "#34C94B",
           },
         },
       },
@@ -44,15 +44,6 @@ const theme = createTheme({
         root: {
           padding: 0,
           margin: 0,
-        },
-      },
-    },
-    MuiTabPanel: {
-      styleOverrides: {
-        root: {
-          color: "tertiary.main",
-          backgroundColor: "secondary.main",
-          padding: "16px",
         },
       },
     },

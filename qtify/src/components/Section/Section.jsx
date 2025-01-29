@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
@@ -29,13 +29,6 @@ const Section = ({
     valueHandle(newValue);
   };
 
-  //   useEffect(() => {
-  //     console.log(albumName);
-  //     console.log(allSongAlbumData);
-  //     // console.log(typeof genresData);
-  //     console.log(genresData.data);
-  //   });
-
   return (
     <div>
       <Grid
@@ -64,12 +57,17 @@ const Section = ({
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList onChange={handleChange} aria-label="Songs genres tabs">
-                  <Tab label="All" value="All" />
+                  <Tab
+                    label="All"
+                    value="All"
+                    sx={{ color: "tertiary.main" }}
+                  />
                   {genresData.data.map((genre) => (
                     <Tab
                       key={genre.key}
                       label={genre.label}
                       value={genre.label}
+                      sx={{ color: "tertiary.main" }}
                     />
                   ))}
                 </TabList>
@@ -137,26 +135,3 @@ const Section = ({
 };
 
 export default Section;
-
-//    <TabPanel value="2"></TabPanel>
-//               <TabPanel value="3"></TabPanel>
-//               <TabPanel value="4"></TabPanel>
-//               <TabPanel value="5"></TabPanel>
-
-{
-  /* <TabPanel key={genre.key} value={genre.label}>
-                  <Grid container spacing={2}>
-                    {allSongAlbumData
-                      .filter((song) => song.genre.label === genre.label)
-                      .map((filteredSong) => (
-                        <Box
-                          sx={{
-                            marginLeft: "30px",
-                          }}
-                        >
-                          <Carousel albumData={filteredSong} />
-                        </Box>
-                      ))}
-                  </Grid>
-                </TabPanel>; */
-}
