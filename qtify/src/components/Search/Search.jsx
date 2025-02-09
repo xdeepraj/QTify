@@ -23,7 +23,8 @@ const Listbox = styled("ul")(({ theme }) => ({
   bottom: 0,
   right: 0,
   listStyle: "none",
-  backgroundColor: "var(--color-black)",
+  backgroundColor: "var(--color-secondary)",
+  color: "var(--color-tertiary)",
   overflow: "auto",
   "& li.Mui-focused": {
     backgroundColor: "#4a8df6",
@@ -54,7 +55,8 @@ function Search({ searchData, placeholder }) {
   const navigate = useNavigate();
   const onSubmit = (e, value) => {
     e.preventDefault();
-    console.log(value);
+    console.log("Selected value:", value);
+    if (!value || !value.slug) return;
     navigate(`/album/${value.slug}`);
     //Process form data, call API, set state etc.
   };
@@ -85,7 +87,6 @@ function Search({ searchData, placeholder }) {
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
-            // console.log(option);
             const artists = option.songs.reduce((accumulator, currentValue) => {
               accumulator.push(...currentValue.artists);
               return accumulator;

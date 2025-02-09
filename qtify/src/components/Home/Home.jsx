@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 
+import Divider from "@mui/material/Divider";
+
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Hero/Hero";
-
 import Section from "../Section/Section";
+import MuiAccordian from "../Accordian/MuiAccordian";
 
 const Home = () => {
   const [topAlbumData, setTopAlbumData] = useState([]);
   const [newAlbumData, setNewAlbumData] = useState([]);
   const [allSongAlbumData, setAllSongAlbumData] = useState([]);
   const [genresData, setGenresData] = useState({ data: [] });
+  const [accordianData, setAccordianData] = useState({ data: [] });
 
   const [isTopCollapsed, setIsTopCollapsed] = useState(false);
   const [isNewCollapsed, setIsNewCollapsed] = useState(false);
@@ -23,6 +26,7 @@ const Home = () => {
     performNewApi();
     performAllSongApi();
     getGenresData();
+    getAccordianData();
   }, []);
 
   const performTopApi = async () => {
@@ -69,9 +73,22 @@ const Home = () => {
     }
   };
 
+  const getAccordianData = async () => {
+    try {
+      const response = await axios.get(
+        "https://qtify-backend-labs.crio.do/faq"
+      );
+      setAccordianData(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
-    <div>
-      <Navbar />
+    <div
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    >
+      <Navbar searchData={[...topAlbumData, ...newAlbumData]} />
       <Hero />
       <Section
         albumName={"Top albums"}
@@ -85,6 +102,7 @@ const Home = () => {
         buttonCollapse={isNewCollapsed}
         buttonCollapseHandle={setIsNewCollapsed}
       />
+      <Divider sx={{ backgroundColor: "primary.main", height: 2, mb: 5 }} />
       <Section
         albumName={"Songs"}
         isSongSection={true}
@@ -93,6 +111,9 @@ const Home = () => {
         allSongAlbumData={allSongAlbumData}
         genresData={genresData}
       />
+      <Divider sx={{ backgroundColor: "primary.main", height: 2, mb: 5 }} />
+      <MuiAccordian accordianData={accordianData} />
+      {/* <Divider sx={{ backgroundColor: "tertiary.main", height: 3, mb: 5 }} /> */}
     </div>
   );
 };
